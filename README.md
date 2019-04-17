@@ -16,7 +16,7 @@ Checkout the repo, and then, choose one of the following options:
 
 1. Docker compose.  Recommended.  As simple as running:
 
-	    docker-compose up --build
+		docker-compose up --build
 
 This will result in a number of events happening:
 
