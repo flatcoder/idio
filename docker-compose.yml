@@ -1,0 +1,14 @@
+# Not to be confused with the Python version, specified in Dockerfile ;)
+version: '3.6'
+
+services:
+  web:
+    restart: always
+    build: .
+    # command = run on start-up, entrypoint = exclusive...
+    entrypoint: ["./launch_server.sh"]
+    volumes:
+      - .:/code
+    ports:
+      - "5202:5000"
+
