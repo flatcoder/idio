@@ -1,6 +1,6 @@
 # IDEAS for a WEB SCRAPER
 
-A web scraper and crawler, wrapped up as a web service with an API.  Supports per-domain configurations for extracting and storing content.  Results are accessible via the database itself, an API that is provided or a simple front-end result browser (included to demonstrate API usage).
+A web scraper and sitemap crawler, wrapped up as a web service with an API.  Supports per-domain configurations for extracting and storing content.  Results are accessible via the database itself, an API that is provided or a simple front-end result browser (included to demonstrate API usage).
 
 ## Technology Stack
 
@@ -107,6 +107,9 @@ Pipelines:
 
     Travis CI
     Python unittest
+	Web server integration (currently using Flask Dev server)
+		- Certainly for production!
+
 
 Data model:
 
@@ -114,4 +117,3 @@ Data model:
 	Site configurations in the database as opposed to the configuration file
 		- avoid local version control conflicts
 		- provide a user interface to rules
-

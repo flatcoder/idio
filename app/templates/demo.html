@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <title>API Demo Page</title>
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="//fonts.googleapis.com/css?family=Raleway:400,300,600" rel="stylesheet" type="text/css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/normalize.css') }}">
+  <link rel="stylesheet" href="{{ url_for('static', filename='css/skeleton.css') }}">
+  <script type = "text/javascript" src = "{{ url_for('static', filename='app.js') }}" ></script>
+</head>
+<body>
+  <div class="container">
+    <div class="row">
+      <div class="column" style="margin-top: 5%">
+   	    <h1>Basic Client Demo (JS)</h1>
+   	    <p>If you view the source, HTML aside, the client is all of 6 lines of Javascript in 'app.js' and 4 lines inline.</p>
+      	<input type="button" onclick="queryAPI('/api/urls');" value="Get URLs" />
+ 	  	  <input type="button" onclick="queryAPI('/api/urls?perpage=5&page=1');" value="URLs, limit 5, page 2" />
+ 	  	  Lookup: &nbsp;<input type="text" value="6023" id='url' />&nbsp;<input type="button" onclick="doParam('url');" value="Get specific" />&nbsp;
+      	<div style='width:100%;border:1px solid;height:400px;'>
+      	  <textarea id='results' style='width:100%;height:100%;'></textarea>
+      	</div>
+      	<script>
+      		function doParam(para) {
+      			let newv = document.getElementById(para).value;
+      			queryAPI('/api/urls?'+para+'='+newv);
+      		}
+      	</script>
+      </div>
+    </div>
+  </div>
+</body>
+</html>
