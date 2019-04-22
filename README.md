@@ -6,11 +6,11 @@ A web scraper and sitemap crawler, wrapped up as a web service with an API.  Sup
 
 A simple demo of the results of the scraper ran against The Guardian sitemap can be seen here:
 
-	http://flatcoder.co.uk:5202
+http://flatcoder.co.uk:5202
 
 The demo uses the API provided in this repo.  An example call would look like:
 
-	http://flatcoder.co.uk:5202/api/urls?perpage=3&page=5
+http://flatcoder.co.uk:5202/api/urls?perpage=3&page=5
 
 ## Technology Stack
 
