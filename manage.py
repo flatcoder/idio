@@ -3,7 +3,7 @@ from flask_migrate import Migrate, MigrateCommand
 from flask import render_template
 from app import create_app
 from app.scraper import ScrapeCommand
-from app.models import db
+from app.models import db, UrlIndex
 import os
 
 # Environment
@@ -28,3 +28,4 @@ def demo():
 # Away we go...
 if __name__ == '__main__':
     manager.run()
+

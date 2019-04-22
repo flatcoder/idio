@@ -2,6 +2,16 @@
 
 A web scraper and sitemap crawler, wrapped up as a web service with an API.  Supports per-domain configurations for extracting and storing content.  Results are accessible via the database itself, an API that is provided or a simple front-end result browser (included to demonstrate API usage).
 
+## Live Demo of Scrape Results API
+
+A simple demo of the results of the scraper ran against The Guardian sitemap can be seen here:
+
+	http://flatcoder.co.uk:5202
+
+The demo uses the API provided in this repo.  An example call would look like:
+
+	http://flatcoder.co.uk:5202/api/urls?perpage=3&page=5
+
 ## Technology Stack
 
 	Docker container.  Allows for development-testing-staging-production like environments.

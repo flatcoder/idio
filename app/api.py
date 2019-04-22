@@ -1,7 +1,6 @@
 from flask import request
 from flask_restful import Resource
-
-# TODO from app.models import url model....
+from app.models import UrlIndex
 
 class BaseAPI(Resource):
     def __init__(self):
@@ -31,7 +30,8 @@ class BaseAPI(Resource):
     def _set_model(self):
         raise NotImplementedError("API base class, derive and implement _set_model.")
 
-#class UrlsAPI(BaseAPI):
-#    def _set_model(self):
-#        self.model = url model.... 
+class UrlsAPI(BaseAPI):
+    def _set_model(self):
+        self.model = UrlIndex
+
 

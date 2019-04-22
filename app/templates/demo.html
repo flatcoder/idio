@@ -12,21 +12,22 @@
   <script type = "text/javascript" src = "{{ url_for('static', filename='app.js') }}" ></script>
 </head>
 <body>
-  <div class="container">
+  <div  style='width:90%;margin:auto;'>
     <div class="row">
       <div class="column" style="margin-top: 5%">
    	    <h1>Basic Client Demo (JS)</h1>
-   	    <p>If you view the source, HTML aside, the client is all of 6 lines of Javascript in 'app.js' and 4 lines inline.</p>
-      	<input type="button" onclick="queryAPI('/api/urls');" value="Get URLs" />
- 	  	  <input type="button" onclick="queryAPI('/api/urls?perpage=5&page=1');" value="URLs, limit 5, page 2" />
- 	  	  Lookup: &nbsp;<input type="text" value="6023" id='url' />&nbsp;<input type="button" onclick="doParam('url');" value="Get specific" />&nbsp;
-      	<div style='width:100%;border:1px solid;height:400px;'>
-      	  <textarea id='results' style='width:100%;height:100%;'></textarea>
+   	    <p>If you view the source, HTML aside, the client is all of 6 lines of Javascript in 'app.js' and 5 lines inline.</p>
+      	<!-- <input type="button" onclick="queryAPI('/api/urls');" value="Get URLs" /> -->
+ 	  	  Per page: &nbsp;<input type="text" value="1" id='ppage' />&nbsp;
+        Page: &nbsp;<input type="text" value="10" id='apage' />&nbsp;<input type="button" onclick="doParams();" value="Go" />&nbsp;
+      	<div style='width:100%;' id='results'>
       	</div>
+        <br/>&nbsp;
       	<script>
-      		function doParam(para) {
-      			let newv = document.getElementById(para).value;
-      			queryAPI('/api/urls?'+para+'='+newv);
+      		function doParams(para) {
+      			let pp = parseInt(document.getElementById('ppage').value);
+            let p = parseInt(document.getElementById('apage').value) - 1;
+      			queryAPI('/api/urls?perpage='+pp+'&page='+p);
       		}
       	</script>
       </div>

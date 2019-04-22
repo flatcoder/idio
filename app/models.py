@@ -1,9 +1,6 @@
 from flask_sqlalchemy import SQLAlchemy
 from sqlalchemy.inspection import inspect
 
-#from flask import request, jsonify
-#import json
-
 db = SQLAlchemy()
 
 class ModelABC(object):
@@ -16,7 +13,7 @@ class ModelABC(object):
 
     def serialize(self):
         """ Basic, but enough for now """
-        return {c: getattr(self, c) for c in inspect(self).attrs.keys()}
+        return {c: str(getattr(self, c)) for c in inspect(self).attrs.keys()}
 
     @classmethod
     def get(cls):
@@ -40,7 +37,7 @@ class UrlIndex(ModelABC, db.Model):
     content = db.Column(db.Text(), nullable=False)
     images_json = db.Column(db.Text(), nullable=True)
     category = db.Column(db.String(32), nullable=True)
-    site_rule = db.Column(db.String(32), nullable=True)
+    # site_rule = db.Column(db.String(32), nullable=True)
 
     @classmethod
     def find(cls, url):
@@ -49,15 +46,32 @@ class UrlIndex(ModelABC, db.Model):
             return recs.first()
         return None
 
-    def create(cls, url, title, content, site_rule,
-            canonical_rel="",images="", category=""):
+    @classmethod
+    def create(cls, url, title, content, canonical_rel="",images="", category=""):
 
         if canonical_rel == "":
             canonical_rel = url
 
         newreg = UrlIndex(url=url,canonical_rel=canonical_rel,title=title,
-                    site_rule=site_rule,content=content,images=images,category=category)
+                    content=content,images_json=images,category=category)
         try:
+            db.session.add(newreg)
+            db.session.commit()
+            return newreg
+        except:
+            raise Exception("Failed creating URL INDEX for "+url+".")
+
+    @classmethod
+    def update(cls, url, title, content, canonical_rel="",images="", category=""):
+        if canonical_rel == "":
+            canonical_rel = url
+
+        try:
+            newreg = UrlIndex.query.filter_by(url=url).first()
+            newreg.title = title
+            newreg.content = content
+            newreg.images = images
+            newreg.canonical_rel = canonical_rel
             db.session.add(newreg)
             db.session.commit()
             return newreg

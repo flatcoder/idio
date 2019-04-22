@@ -22,10 +22,8 @@ site_rules = {
     "theguardian.com": {
         "title":"content__headline",
         "content":["content__standfirst","content__article-body",],
-
-# TODO ## tagS - make plural
+        # TODO - content_tag should be plural really
         "content_tag":"p",
-#
         "image_wrap":"picture",
         "image_tag":"img",
         "must_have_alt":True,
@@ -33,8 +31,8 @@ site_rules = {
         "ignore_list":["/live/","/gallery/","/video/",
                        "/picture/","/audio/","/lifeandstyle/",
                        "/football/","/artanddesign/","/info/"],
-        "category_uri":"/0/",  # position in uri scheme
-        "category_param":None, # a GET param dictates category
+        "category_uri":3,  # DONE: position in uri scheme
+        "category_param":None, # TODO: GET param dictates category
     },
 
     # new, only tested on example url, no images
